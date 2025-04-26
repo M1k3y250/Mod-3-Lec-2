@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+</head>
+<body>
+    <h1>Bienvenido a la Aplicación</h1>
+
+    {% if current_user.is_authenticated %}
+        <p>Estás conectado como <strong>{{ current_user.id }}</strong> (rol: {{ current_user.role }})</p>
+        <p><a href="{{ url_for('dashboard') }}">Ir al Dashboard</a></p>
+        <p><a href="{{ url_for('logout') }}">Cerrar sesión</a></p>
+    {% else %}
+        <p><a href="{{ url_for('login') }}">Iniciar sesión</a></p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+### Página de inicio
+GET http://localhost:5000/
+Accept: text/html
+
+### Login como admin
+POST http://localhost:5000/login
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=admin123
+
+### Acceso al dashboard (requiere login)
+GET http://localhost:5000/dashboard
+Cookie: session=<COPIA_TU_COOKIE_AQUÍ>
+
+### Acceso a la ruta admin (requiere rol admin)
+GET http://localhost:5000/admin
+Cookie: session=<COPIA_TU_COOKIE_AQUÍ>
+
+### Acceso a la ruta user (debería fallar para admin)
+GET http://localhost:5000/user
+Cookie: session=<COPIA_TU_COOKIE_AQUÍ>
+
+### Login como user
+POST http://localhost:5000/login
+Content-Type: application/x-www-form-urlencoded
+
+username=user&password=user123
+
+### Acceso a la ruta user (válido)
+GET http://localhost:5000/user
+Cookie: session=<COPIA_COOKIE_USER>
+
+### Acceso a la ruta admin (debería fallar para user)
+GET http://localhost:5000/admin
+Cookie: session=<COPIA_COOKIE_USER>

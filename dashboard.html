@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Panel de Usuario</h1>
+    <p>Hola, <strong>{{ name }}</strong>. Tu rol es: <strong>{{ role }}</strong></p>
+
+    <ul>
+        <li><a href="{{ url_for('home') }}">Inicio</a></li>
+        {% if role == 'admin' %}
+            <li><a href="{{ url_for('admin_panel') }}">Área de Administrador</a></li>
+        {% endif %}
+        {% if role == 'user' %}
+            <li><a href="{{ url_for('user_panel') }}">Área de Usuario</a></li>
+        {% endif %}
+        <li><a href="{{ url_for('logout') }}">Cerrar sesión</a></li>
+    </ul>
+</body>
+</html>
